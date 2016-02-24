@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kaifa.authority.mapper.FunctionTreeMapper" >
+  <resultMap id="BaseResultMap" type="com.kaifa.authority.pojo.FunctionTree" >
+    <id column="func_code" property="funcCode" jdbcType="VARCHAR" />
+    <result column="func_name" property="funcName" jdbcType="VARCHAR" />
+    <result column="parent_func_code" property="parentFuncCode" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="menu_type" property="menuType" jdbcType="CHAR" />
+    <result column="menu" property="menu" jdbcType="VARCHAR" />
+    <result column="menu_serial" property="menuSerial" jdbcType="DECIMAL" />
+    <result column="is_enable" property="isEnable" jdbcType="CHAR" />
+    <result column="insert_user" property="insertUser" jdbcType="VARCHAR" />
+    <result column="insert_date" property="insertDate" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    func_code, func_name,parent_func_code,icon, menu_type, menu, menu_serial, is_enable, insert_user, insert_date, 
+    update_user, update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from FUNCTION_TREE
+    where func_code = #{funcCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from FUNCTION_TREE
+    where func_code = #{funcCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kaifa.authority.pojo.FunctionTree" >
+    insert into FUNCTION_TREE (func_code, func_name, menu_type, 
+      menu, menu_serial, is_enable, 
+      insert_user, insert_date, update_user, 
+      update_date)
+    values (#{funcCode,jdbcType=VARCHAR}, #{funcName,jdbcType=VARCHAR}, #{menuType,jdbcType=CHAR}, 
+      #{menu,jdbcType=VARCHAR}, #{menuSerial,jdbcType=DECIMAL}, #{isEnable,jdbcType=CHAR}, 
+      #{insertUser,jdbcType=VARCHAR}, #{insertDate,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kaifa.authority.pojo.FunctionTree" >
+    insert into FUNCTION_TREE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="funcCode != null" >
+        func_code,
+      </if>
+      <if test="funcName != null" >
+        func_name,
+      </if>
+      <if test="parentFuncCode != null" >
+        parent_func_code,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="menuType != null" >
+        menu_type,
+      </if>
+      <if test="menu != null" >
+        menu,
+      </if>
+      <if test="menuSerial != null" >
+        menu_serial,
+      </if>
+      <if test="isEnable != null" >
+        is_enable,
+      </if>
+      <if test="insertUser != null" >
+        insert_user,
+      </if>
+      <if test="insertDate != null" >
+        insert_date,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="funcCode != null" >
+        #{funcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="funcName != null" >
+        #{funcName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentFuncCode != null" >
+        #{parentFuncCode,jdbcType=CHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=CHAR},
+      </if>
+      <if test="menuType != null" >
+        #{menuType,jdbcType=CHAR},
+      </if>
+      <if test="menu != null" >
+        #{menu,jdbcType=VARCHAR},
+      </if>
+      <if test="menuSerial != null" >
+        #{menuSerial,jdbcType=DECIMAL},
+      </if>
+      <if test="isEnable != null" >
+        #{isEnable,jdbcType=CHAR},
+      </if>
+      <if test="insertUser != null" >
+        #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kaifa.authority.pojo.FunctionTree" >
+    update FUNCTION_TREE
+    <set >
+      <if test="funcName != null" >
+        func_name = #{funcName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentFuncCode != null" >
+        parent_func_code= #{parentFuncCode,jdbcType=CHAR},
+      </if>
+      <if test="icon != null" >
+        icon= #{icon,jdbcType=CHAR},
+      </if>
+      <if test="menuType != null" >
+        menu_type = #{menuType,jdbcType=CHAR},
+      </if>
+      <if test="menu != null" >
+        menu = #{menu,jdbcType=VARCHAR},
+      </if>
+      <if test="menuSerial != null" >
+        menu_serial = #{menuSerial,jdbcType=DECIMAL},
+      </if>
+      <if test="isEnable != null" >
+        is_enable = #{isEnable,jdbcType=CHAR},
+      </if>
+      <if test="insertUser != null" >
+        insert_user = #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where func_code = #{funcCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kaifa.authority.pojo.FunctionTree" >
+    update FUNCTION_TREE
+    set func_name = #{funcName,jdbcType=VARCHAR},
+      menu_type = #{menuType,jdbcType=CHAR},
+      menu = #{menu,jdbcType=VARCHAR},
+      menu_serial = #{menuSerial,jdbcType=DECIMAL},
+      is_enable = #{isEnable,jdbcType=CHAR},
+      insert_user = #{insertUser,jdbcType=VARCHAR},
+      insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where func_code = #{funcCode,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getFuncTreeChildren" resultMap="BaseResultMap" parameterType="com.kaifa.authority.pojo.FunctionTree" >
+    select 
+    <include refid="Base_Column_List" />
+    from FUNCTION_TREE
+    where 1=1
+    <if test="parentFuncCode != null" >
+         and parent_func_code = #{parentFuncCode,jdbcType=VARCHAR}
+      </if>
+    <if test="parentFuncCode == null" >
+         and parent_func_code is null
+      </if>
+  </select>
+  
+</mapper>

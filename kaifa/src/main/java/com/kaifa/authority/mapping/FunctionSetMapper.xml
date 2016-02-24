@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kaifa.authority.mapper.FunctionSetMapper" >
+  <resultMap id="BaseResultMap" type="com.kaifa.authority.pojo.FunctionSet" >
+    <id column="func_set_code" property="funcSetCode" jdbcType="VARCHAR" />
+    <result column="func_name" property="funcName" jdbcType="VARCHAR" />
+    <result column="group_code" property="groupCode" jdbcType="VARCHAR" />
+    <result column="is_enable" property="isEnable" jdbcType="CHAR" />
+    <result column="insert_user" property="insertUser" jdbcType="VARCHAR" />
+    <result column="insert_date" property="insertDate" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    func_set_code, func_name, group_code, is_enable, insert_user, insert_date, update_user, 
+    update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from FUNCTION_SET
+    where func_set_code = #{funcSetCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from FUNCTION_SET
+    where func_set_code = #{funcSetCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kaifa.authority.pojo.FunctionSet" >
+    insert into FUNCTION_SET (func_set_code, func_name, group_code, 
+      is_enable, insert_user, insert_date, 
+      update_user, update_date)
+    values (#{funcSetCode,jdbcType=VARCHAR}, #{funcName,jdbcType=VARCHAR}, #{groupCode,jdbcType=VARCHAR}, 
+      #{isEnable,jdbcType=CHAR}, #{insertUser,jdbcType=VARCHAR}, #{insertDate,jdbcType=TIMESTAMP}, 
+      #{updateUser,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kaifa.authority.pojo.FunctionSet" >
+    insert into FUNCTION_SET
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="funcSetCode != null" >
+        func_set_code,
+      </if>
+      <if test="funcName != null" >
+        func_name,
+      </if>
+      <if test="groupCode != null" >
+        group_code,
+      </if>
+      <if test="isEnable != null" >
+        is_enable,
+      </if>
+      <if test="insertUser != null" >
+        insert_user,
+      </if>
+      <if test="insertDate != null" >
+        insert_date,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="funcSetCode != null" >
+        #{funcSetCode,jdbcType=VARCHAR},
+      </if>
+      <if test="funcName != null" >
+        #{funcName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupCode != null" >
+        #{groupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnable != null" >
+        #{isEnable,jdbcType=CHAR},
+      </if>
+      <if test="insertUser != null" >
+        #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kaifa.authority.pojo.FunctionSet" >
+    update FUNCTION_SET
+    <set >
+      <if test="funcName != null" >
+        func_name = #{funcName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupCode != null" >
+        group_code = #{groupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnable != null" >
+        is_enable = #{isEnable,jdbcType=CHAR},
+      </if>
+      <if test="insertUser != null" >
+        insert_user = #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where func_set_code = #{funcSetCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kaifa.authority.pojo.FunctionSet" >
+    update FUNCTION_SET
+    set func_name = #{funcName,jdbcType=VARCHAR},
+      group_code = #{groupCode,jdbcType=VARCHAR},
+      is_enable = #{isEnable,jdbcType=CHAR},
+      insert_user = #{insertUser,jdbcType=VARCHAR},
+      insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where func_set_code = #{funcSetCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

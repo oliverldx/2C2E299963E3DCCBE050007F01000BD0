@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kaifa.authority.mapper.UserDegreeMapper" >
+  <resultMap id="BaseResultMap" type="com.kaifa.authority.pojo.UserDegree" >
+    <id column="degree_code" property="degreeCode" jdbcType="VARCHAR" />
+    <result column="user_code" property="userCode" jdbcType="VARCHAR" />
+    <result column="degree_name" property="degreeName" jdbcType="VARCHAR" />
+    <result column="dgr_enable_date_begin" property="dgrEnableDateBegin" jdbcType="TIMESTAMP" />
+    <result column="dgr_enable_date_end" property="dgrEnableDateEnd" jdbcType="TIMESTAMP" />
+    <result column="group_code" property="groupCode" jdbcType="VARCHAR" />
+    <result column="is_enable" property="isEnable" jdbcType="CHAR" />
+    <result column="insert_user" property="insertUser" jdbcType="VARCHAR" />
+    <result column="insert_date" property="insertDate" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    degree_code, user_code, degree_name, dgr_enable_date_begin, dgr_enable_date_end, 
+    group_code, is_enable, insert_user, insert_date, update_user, update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from USER_DEGREE
+    where degree_code = #{degreeCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from USER_DEGREE
+    where degree_code = #{degreeCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kaifa.authority.pojo.UserDegree" >
+    insert into USER_DEGREE (degree_code, user_code, degree_name, 
+      dgr_enable_date_begin, dgr_enable_date_end, 
+      group_code, is_enable, insert_user, 
+      insert_date, update_user, update_date
+      )
+    values (#{degreeCode,jdbcType=VARCHAR}, #{userCode,jdbcType=VARCHAR}, #{degreeName,jdbcType=VARCHAR}, 
+      #{dgrEnableDateBegin,jdbcType=TIMESTAMP}, #{dgrEnableDateEnd,jdbcType=TIMESTAMP}, 
+      #{groupCode,jdbcType=VARCHAR}, #{isEnable,jdbcType=CHAR}, #{insertUser,jdbcType=VARCHAR}, 
+      #{insertDate,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kaifa.authority.pojo.UserDegree" >
+    insert into USER_DEGREE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="degreeCode != null" >
+        degree_code,
+      </if>
+      <if test="userCode != null" >
+        user_code,
+      </if>
+      <if test="degreeName != null" >
+        degree_name,
+      </if>
+      <if test="dgrEnableDateBegin != null" >
+        dgr_enable_date_begin,
+      </if>
+      <if test="dgrEnableDateEnd != null" >
+        dgr_enable_date_end,
+      </if>
+      <if test="groupCode != null" >
+        group_code,
+      </if>
+      <if test="isEnable != null" >
+        is_enable,
+      </if>
+      <if test="insertUser != null" >
+        insert_user,
+      </if>
+      <if test="insertDate != null" >
+        insert_date,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="degreeCode != null" >
+        #{degreeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null" >
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="degreeName != null" >
+        #{degreeName,jdbcType=VARCHAR},
+      </if>
+      <if test="dgrEnableDateBegin != null" >
+        #{dgrEnableDateBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dgrEnableDateEnd != null" >
+        #{dgrEnableDateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="groupCode != null" >
+        #{groupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnable != null" >
+        #{isEnable,jdbcType=CHAR},
+      </if>
+      <if test="insertUser != null" >
+        #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kaifa.authority.pojo.UserDegree" >
+    update USER_DEGREE
+    <set >
+      <if test="userCode != null" >
+        user_code = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="degreeName != null" >
+        degree_name = #{degreeName,jdbcType=VARCHAR},
+      </if>
+      <if test="dgrEnableDateBegin != null" >
+        dgr_enable_date_begin = #{dgrEnableDateBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dgrEnableDateEnd != null" >
+        dgr_enable_date_end = #{dgrEnableDateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="groupCode != null" >
+        group_code = #{groupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnable != null" >
+        is_enable = #{isEnable,jdbcType=CHAR},
+      </if>
+      <if test="insertUser != null" >
+        insert_user = #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where degree_code = #{degreeCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kaifa.authority.pojo.UserDegree" >
+    update USER_DEGREE
+    set user_code = #{userCode,jdbcType=VARCHAR},
+      degree_name = #{degreeName,jdbcType=VARCHAR},
+      dgr_enable_date_begin = #{dgrEnableDateBegin,jdbcType=TIMESTAMP},
+      dgr_enable_date_end = #{dgrEnableDateEnd,jdbcType=TIMESTAMP},
+      group_code = #{groupCode,jdbcType=VARCHAR},
+      is_enable = #{isEnable,jdbcType=CHAR},
+      insert_user = #{insertUser,jdbcType=VARCHAR},
+      insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where degree_code = #{degreeCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,6 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Sat May 23 00:21:52 CST 2015
+http\://repository.sonatype.org/content/groups/forge/.error=
+default-http\://repo.maven.apache.org/maven2/.lastUpdated=1432311712497
+http\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.springframework\:spring-beans\:jar\:2.5.6 from/to central (http\://repo.maven.apache.org/maven2)\: No response received after 60000
+http\://repository.sonatype.org/content/groups/forge/.lastUpdated=1432311591489

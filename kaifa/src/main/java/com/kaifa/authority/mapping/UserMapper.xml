@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kaifa.authority.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.kaifa.authority.pojo.User" >
+    <id column="user_code" property="userCode" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="job" property="job" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="enter_group_date" property="enterGroupDate" jdbcType="TIMESTAMP" />
+    <result column="leave_group_date" property="leaveGroupDate" jdbcType="TIMESTAMP" />
+    <result column="job_code" property="jobCode" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="insert_user" property="insertUser" jdbcType="VARCHAR" />
+    <result column="insert_date" property="insertDate" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_code, user_name, job, sex, enter_group_date, leave_group_date, job_code, email, 
+    contact, insert_user, insert_date, update_user, update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from USER
+    where user_code = #{userCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from USER
+    where user_code = #{userCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kaifa.authority.pojo.User" >
+    insert into USER (user_code, user_name, job, 
+      sex, enter_group_date, leave_group_date, 
+      job_code, email, contact, 
+      insert_user, insert_date, update_user, 
+      update_date)
+    values (#{userCode,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{enterGroupDate,jdbcType=TIMESTAMP}, #{leaveGroupDate,jdbcType=TIMESTAMP}, 
+      #{jobCode,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
+      #{insertUser,jdbcType=VARCHAR}, #{insertDate,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kaifa.authority.pojo.User" >
+    insert into USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userCode != null" >
+        user_code,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="job != null" >
+        job,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="enterGroupDate != null" >
+        enter_group_date,
+      </if>
+      <if test="leaveGroupDate != null" >
+        leave_group_date,
+      </if>
+      <if test="jobCode != null" >
+        job_code,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="insertUser != null" >
+        insert_user,
+      </if>
+      <if test="insertDate != null" >
+        insert_date,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userCode != null" >
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null" >
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="enterGroupDate != null" >
+        #{enterGroupDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveGroupDate != null" >
+        #{leaveGroupDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jobCode != null" >
+        #{jobCode,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="insertUser != null" >
+        #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kaifa.authority.pojo.User" >
+    update USER
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null" >
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="enterGroupDate != null" >
+        enter_group_date = #{enterGroupDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveGroupDate != null" >
+        leave_group_date = #{leaveGroupDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jobCode != null" >
+        job_code = #{jobCode,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="insertUser != null" >
+        insert_user = #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_code = #{userCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kaifa.authority.pojo.User" >
+    update USER
+    set user_name = #{userName,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      enter_group_date = #{enterGroupDate,jdbcType=TIMESTAMP},
+      leave_group_date = #{leaveGroupDate,jdbcType=TIMESTAMP},
+      job_code = #{jobCode,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      insert_user = #{insertUser,jdbcType=VARCHAR},
+      insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where user_code = #{userCode,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="queryUserPage" resultMap="BaseResultMap"
+		parameterType="com.kaifa.authority.pojo.User">
+		select
+		<include refid="Base_Column_List" />
+		from USER
+		where 1=1
+		<if test="userName != null">
+			and user_name = #{userName,jdbcType=VARCHAR}
+		</if>
+		limit #{pageNow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+  
+</mapper>

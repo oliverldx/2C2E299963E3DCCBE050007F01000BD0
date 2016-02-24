@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kaifa.authority.mapper.GroupRoleUserDegreeMapper" >
+  <resultMap id="BaseResultMap" type="com.kaifa.authority.pojo.GroupRoleUserDegree" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="degree_code" property="degreeCode" jdbcType="VARCHAR" />
+    <result column="group_role_id" property="groupRoleId" jdbcType="VARCHAR" />
+    <result column="insert_user" property="insertUser" jdbcType="VARCHAR" />
+    <result column="insert_date" property="insertDate" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, degree_code, group_role_id, insert_user, insert_date, update_user, update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from group_role_user_degree
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from group_role_user_degree
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kaifa.authority.pojo.GroupRoleUserDegree" >
+    insert into group_role_user_degree (id, degree_code, group_role_id, 
+      insert_user, insert_date, update_user, 
+      update_date)
+    values (#{id,jdbcType=VARCHAR}, #{degreeCode,jdbcType=VARCHAR}, #{groupRoleId,jdbcType=VARCHAR}, 
+      #{insertUser,jdbcType=VARCHAR}, #{insertDate,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kaifa.authority.pojo.GroupRoleUserDegree" >
+    insert into group_role_user_degree
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="degreeCode != null" >
+        degree_code,
+      </if>
+      <if test="groupRoleId != null" >
+        group_role_id,
+      </if>
+      <if test="insertUser != null" >
+        insert_user,
+      </if>
+      <if test="insertDate != null" >
+        insert_date,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="degreeCode != null" >
+        #{degreeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="groupRoleId != null" >
+        #{groupRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="insertUser != null" >
+        #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kaifa.authority.pojo.GroupRoleUserDegree" >
+    update group_role_user_degree
+    <set >
+      <if test="degreeCode != null" >
+        degree_code = #{degreeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="groupRoleId != null" >
+        group_role_id = #{groupRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="insertUser != null" >
+        insert_user = #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kaifa.authority.pojo.GroupRoleUserDegree" >
+    update group_role_user_degree
+    set degree_code = #{degreeCode,jdbcType=VARCHAR},
+      group_role_id = #{groupRoleId,jdbcType=VARCHAR},
+      insert_user = #{insertUser,jdbcType=VARCHAR},
+      insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

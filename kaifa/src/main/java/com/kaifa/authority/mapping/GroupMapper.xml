@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kaifa.authority.mapper.GroupMapper" >
+  <resultMap id="BaseResultMap" type="com.kaifa.authority.pojo.Group" >
+    <id column="group_code" property="groupCode" jdbcType="VARCHAR" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="group_parent" property="groupParent" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="is_enable" property="isEnable" jdbcType="CHAR" />
+    <result column="grp_enable_date_begin" property="grpEnableDateBegin" jdbcType="TIMESTAMP" />
+    <result column="grp_enable_date_end" property="grpEnableDateEnd" jdbcType="TIMESTAMP" />
+    <result column="insert_user" property="insertUser" jdbcType="VARCHAR" />
+    <result column="insert_date" property="insertDate" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    group_code, group_name, group_parent, address, contact, fax, email, is_enable, grp_enable_date_begin, 
+    grp_enable_date_end, insert_user, insert_date, update_user, update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from GROUP_T
+    where group_code = #{groupCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from GROUP_T
+    where group_code = #{groupCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kaifa.authority.pojo.Group" >
+    insert into GROUP_T (group_code, group_name, group_parent, 
+      address, contact, fax, 
+      email, is_enable, grp_enable_date_begin, 
+      grp_enable_date_end, insert_user, insert_date, 
+      update_user, update_date)
+    values (#{groupCode,jdbcType=VARCHAR}, #{groupName,jdbcType=VARCHAR}, #{groupParent,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{isEnable,jdbcType=CHAR}, #{grpEnableDateBegin,jdbcType=TIMESTAMP}, 
+      #{grpEnableDateEnd,jdbcType=TIMESTAMP}, #{insertUser,jdbcType=VARCHAR}, #{insertDate,jdbcType=TIMESTAMP}, 
+      #{updateUser,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kaifa.authority.pojo.Group" >
+    insert into GROUP_T
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="groupCode != null" >
+        group_code,
+      </if>
+      <if test="groupName != null" >
+        group_name,
+      </if>
+      <if test="groupParent != null" >
+        group_parent,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="fax != null" >
+        fax,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="isEnable != null" >
+        is_enable,
+      </if>
+      <if test="grpEnableDateBegin != null" >
+        grp_enable_date_begin,
+      </if>
+      <if test="grpEnableDateEnd != null" >
+        grp_enable_date_end,
+      </if>
+      <if test="insertUser != null" >
+        insert_user,
+      </if>
+      <if test="insertDate != null" >
+        insert_date,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="groupCode != null" >
+        #{groupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupParent != null" >
+        #{groupParent,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnable != null" >
+        #{isEnable,jdbcType=CHAR},
+      </if>
+      <if test="grpEnableDateBegin != null" >
+        #{grpEnableDateBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grpEnableDateEnd != null" >
+        #{grpEnableDateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertUser != null" >
+        #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kaifa.authority.pojo.Group" >
+    update GROUP_T
+    <set >
+      <if test="groupName != null" >
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupParent != null" >
+        group_parent = #{groupParent,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnable != null" >
+        is_enable = #{isEnable,jdbcType=CHAR},
+      </if>
+      <if test="grpEnableDateBegin != null" >
+        grp_enable_date_begin = #{grpEnableDateBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grpEnableDateEnd != null" >
+        grp_enable_date_end = #{grpEnableDateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insertUser != null" >
+        insert_user = #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where group_code = #{groupCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kaifa.authority.pojo.Group" >
+    update GROUP_T
+    set group_name = #{groupName,jdbcType=VARCHAR},
+      group_parent = #{groupParent,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      is_enable = #{isEnable,jdbcType=CHAR},
+      grp_enable_date_begin = #{grpEnableDateBegin,jdbcType=TIMESTAMP},
+      grp_enable_date_end = #{grpEnableDateEnd,jdbcType=TIMESTAMP},
+      insert_user = #{insertUser,jdbcType=VARCHAR},
+      insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where group_code = #{groupCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

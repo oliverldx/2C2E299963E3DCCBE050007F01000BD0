@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kaifa.authority.mapper.SystemFunctionMapper" >
+  <resultMap id="BaseResultMap" type="com.kaifa.authority.pojo.SystemFunction" >
+    <id column="sys_func_code" property="sysFuncCode" jdbcType="VARCHAR" />
+    <result column="sys_func_name" property="sysFuncName" jdbcType="VARCHAR" />
+    <result column="is_enable" property="isEnable" jdbcType="CHAR" />
+    <result column="insert_user" property="insertUser" jdbcType="VARCHAR" />
+    <result column="insert_date" property="insertDate" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sys_func_code, sys_func_name, is_enable, insert_user, insert_date, update_user, update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYSTEM_FUNCTION
+    where sys_func_code = #{sysFuncCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SYSTEM_FUNCTION
+    where sys_func_code = #{sysFuncCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kaifa.authority.pojo.SystemFunction" >
+    insert into SYSTEM_FUNCTION (sys_func_code, sys_func_name, is_enable, 
+      insert_user, insert_date, update_user, 
+      update_date)
+    values (#{sysFuncCode,jdbcType=VARCHAR}, #{sysFuncName,jdbcType=VARCHAR}, #{isEnable,jdbcType=CHAR}, 
+      #{insertUser,jdbcType=VARCHAR}, #{insertDate,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kaifa.authority.pojo.SystemFunction" >
+    insert into SYSTEM_FUNCTION
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sysFuncCode != null" >
+        sys_func_code,
+      </if>
+      <if test="sysFuncName != null" >
+        sys_func_name,
+      </if>
+      <if test="isEnable != null" >
+        is_enable,
+      </if>
+      <if test="insertUser != null" >
+        insert_user,
+      </if>
+      <if test="insertDate != null" >
+        insert_date,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sysFuncCode != null" >
+        #{sysFuncCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sysFuncName != null" >
+        #{sysFuncName,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnable != null" >
+        #{isEnable,jdbcType=CHAR},
+      </if>
+      <if test="insertUser != null" >
+        #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kaifa.authority.pojo.SystemFunction" >
+    update SYSTEM_FUNCTION
+    <set >
+      <if test="sysFuncName != null" >
+        sys_func_name = #{sysFuncName,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnable != null" >
+        is_enable = #{isEnable,jdbcType=CHAR},
+      </if>
+      <if test="insertUser != null" >
+        insert_user = #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where sys_func_code = #{sysFuncCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kaifa.authority.pojo.SystemFunction" >
+    update SYSTEM_FUNCTION
+    set sys_func_name = #{sysFuncName,jdbcType=VARCHAR},
+      is_enable = #{isEnable,jdbcType=CHAR},
+      insert_user = #{insertUser,jdbcType=VARCHAR},
+      insert_date = #{insertDate,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where sys_func_code = #{sysFuncCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

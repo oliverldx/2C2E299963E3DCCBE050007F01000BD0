@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kaifa.authority.mapper.RoleFuncSetMapper" >
+  <resultMap id="BaseResultMap" type="com.kaifa.authority.pojo.RoleFuncSet" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="func_set_code" property="funcSetCode" jdbcType="VARCHAR" />
+    <result column="role_code" property="roleCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, func_set_code, role_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ROLE_FUNC_SET
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ROLE_FUNC_SET
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kaifa.authority.pojo.RoleFuncSet" >
+    insert into ROLE_FUNC_SET (id, func_set_code, role_code
+      )
+    values (#{id,jdbcType=VARCHAR}, #{funcSetCode,jdbcType=VARCHAR}, #{roleCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kaifa.authority.pojo.RoleFuncSet" >
+    insert into ROLE_FUNC_SET
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="funcSetCode != null" >
+        func_set_code,
+      </if>
+      <if test="roleCode != null" >
+        role_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="funcSetCode != null" >
+        #{funcSetCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCode != null" >
+        #{roleCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kaifa.authority.pojo.RoleFuncSet" >
+    update ROLE_FUNC_SET
+    <set >
+      <if test="funcSetCode != null" >
+        func_set_code = #{funcSetCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCode != null" >
+        role_code = #{roleCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kaifa.authority.pojo.RoleFuncSet" >
+    update ROLE_FUNC_SET
+    set func_set_code = #{funcSetCode,jdbcType=VARCHAR},
+      role_code = #{roleCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
